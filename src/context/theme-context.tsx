@@ -18,6 +18,9 @@ export const ThemeContext = createContext<ThemeContextValue>({
   setTheme: () => {},
 });
 
+const THEME_STORAGE_KEY = "finora-theme";
+const LEGACY_THEME_STORAGE_KEY = "fenco-theme";
+
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
   const isDark =
@@ -29,13 +32,15 @@ function applyTheme(theme: Theme) {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
-    const stored = localStorage.getItem("fenco-theme") as Theme | null;
+    const stored = (localStorage.getItem(THEME_STORAGE_KEY) ??
+      localStorage.getItem(LEGACY_THEME_STORAGE_KEY)) as Theme | null;
     return stored ?? "light";
   });
 
   const setTheme = useCallback((t: Theme) => {
     setThemeState(t);
-    localStorage.setItem("fenco-theme", t);
+    localStorage.setItem(THEME_STORAGE_KEY, t);
+    localStorage.removeItem(LEGACY_THEME_STORAGE_KEY);
     applyTheme(t);
   }, []);
 
