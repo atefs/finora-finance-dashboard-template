@@ -25,3 +25,7 @@ dist-ssr
 *.sw?
 
 commits.py
+
+# Environment variables
+.env*
+!.env.example
