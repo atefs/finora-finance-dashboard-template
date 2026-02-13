@@ -1,11 +1,4 @@
-import type {
-  Transaction,
-  User,
-  BalancePoint,
-  ActivityItem,
-  Session,
-  Invoice,
-} from "@/types";
+import type { Transaction, User, BalancePoint, ActivityItem, Session, Invoice } from "@/types";
 
 export const USERS: User[] = [
   {
@@ -100,21 +93,18 @@ const descriptions = [
   "Transfer to Savings",
 ];
 
-export const TRANSACTIONS: Transaction[] = Array.from(
-  { length: 50 },
-  (_, i) => ({
-    id: `txn-${i + 1}`,
-    date: new Date(2024, 3 - Math.floor(i / 15), 28 - (i % 28)).toISOString(),
-    description: descriptions[i % descriptions.length],
-    category: categories[i % categories.length],
-    amount:
-      i % 5 === 0
-        ? Math.round((Math.random() * 5000 + 500) * 100) / 100
-        : -Math.round((Math.random() * 800 + 10) * 100) / 100,
-    status: statuses[i % 7 === 0 ? 2 : i % 3 === 0 ? 1 : 0],
-    avatar: USERS[i % USERS.length]?.avatarInitials,
-  }),
-);
+export const TRANSACTIONS: Transaction[] = Array.from({ length: 50 }, (_, i) => ({
+  id: `txn-${i + 1}`,
+  date: new Date(2024, 3 - Math.floor(i / 15), 28 - (i % 28)).toISOString(),
+  description: descriptions[i % descriptions.length]!,
+  category: categories[i % categories.length]!,
+  amount:
+    i % 5 === 0
+      ? Math.round((Math.random() * 5000 + 500) * 100) / 100
+      : -Math.round((Math.random() * 800 + 10) * 100) / 100,
+  status: statuses[i % 7 === 0 ? 2 : i % 3 === 0 ? 1 : 0]!,
+  avatar: USERS[i % USERS.length]?.avatarInitials,
+}));
 
 export const MONTHLY_BALANCE: BalancePoint[] = [
   { month: "Apr", balance: 28400, expenses: 4200, income: 6800 },
