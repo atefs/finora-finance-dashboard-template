@@ -61,12 +61,7 @@ export default function AnalyticsGauge() {
           >
             {percentage}%
           </text>
-          <text
-            x="55"
-            y="72"
-            textAnchor="middle"
-            className="fill-muted-foreground text-[10px]"
-          >
+          <text x="55" y="72" textAnchor="middle" className="fill-muted-foreground text-[10px]">
             Done
           </text>
         </svg>

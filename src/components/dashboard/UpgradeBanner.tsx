@@ -8,9 +8,7 @@ export default function UpgradeBanner() {
       <Diamond size={24} className="text-background shrink-0" />
       <div className="flex-1">
         <p className="text-sm font-semibold">More features?</p>
-        <p className="text-xs opacity-70">
-          Update your account to premium to get more features
-        </p>
+        <p className="text-xs opacity-70">Update your account to premium to get more features</p>
       </div>
       <Button
         variant="secondary"

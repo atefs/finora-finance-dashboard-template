@@ -43,11 +43,7 @@ export default function BalanceCard() {
         <div className="h-16 w-32">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={barData}>
-              <Bar
-                dataKey="income"
-                fill="hsl(var(--foreground))"
-                radius={[3, 3, 0, 0]}
-              />
+              <Bar dataKey="income" fill="hsl(var(--foreground))" radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

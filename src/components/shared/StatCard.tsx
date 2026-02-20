@@ -9,13 +9,7 @@ interface StatCardProps {
   trendUp?: boolean;
 }
 
-export default function StatCard({
-  label,
-  value,
-  icon: Icon,
-  trend,
-  trendUp,
-}: StatCardProps) {
+export default function StatCard({ label, value, icon: Icon, trend, trendUp }: StatCardProps) {
   return (
     <Card className="rounded-2xl p-5">
       <div className="mb-2 flex items-center gap-3">
@@ -26,9 +20,7 @@ export default function StatCard({
       </div>
       <p className="text-foreground text-2xl font-bold">{value}</p>
       {trend && (
-        <p
-          className={`mt-1 text-xs ${trendUp ? "text-emerald-600" : "text-red-500"}`}
-        >
+        <p className={`mt-1 text-xs ${trendUp ? "text-emerald-600" : "text-red-500"}`}>
           {trendUp ? "↑" : "↓"} {trend}
         </p>
       )}
