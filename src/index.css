@@ -93,7 +93,7 @@
     --info: 220 60% 67%;
     --info-foreground: 0 0% 100%;
     --muted: 30 10% 90%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 40%;
     --border: 0 0% 100%;
     --input: 30 10% 88%;
     --ring: 220 60% 67%;
@@ -128,7 +128,7 @@
     --destructive: 0 72% 60%;
     --destructive-foreground: 0 0% 100%;
     --muted: 0 0% 17%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 65%;
     --border: 0 0% 18%;
     --input: 0 0% 18%;
     --ring: 220 60% 67%;
