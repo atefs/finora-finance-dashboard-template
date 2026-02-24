@@ -38,6 +38,7 @@ export default function TransactionsList() {
         <Button
           variant="ghost"
           size="icon"
+          aria-label="More options"
           className="h-6 w-6 transition-transform duration-200 hover:scale-110"
         >
           <MoreHorizontal size={14} />
@@ -49,26 +50,21 @@ export default function TransactionsList() {
             <div className="group hover:bg-muted/50 -mx-2 flex items-center justify-between rounded-lg px-2 py-3 transition-colors duration-200">
               <div className="flex items-center gap-3">
                 <Avatar className="h-9 w-9 transition-transform duration-200 group-hover:scale-110">
-                  <AvatarFallback
-                    className={`${t.color} text-primary-foreground text-xs`}
-                  >
+                  <AvatarFallback className={`${t.color} text-primary-foreground text-xs`}>
                     {t.initials}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-foreground text-sm font-medium">
-                    {t.name}
-                  </p>
+                  <p className="text-foreground text-sm font-medium">{t.name}</p>
                   <p className="text-primary text-xs">{t.date}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-foreground text-sm font-medium">
-                  {t.amount}
-                </span>
+                <span className="text-foreground text-sm font-medium">{t.amount}</span>
                 <Button
                   variant="ghost"
                   size="icon"
+                  aria-label="More options"
                   className="h-6 w-6 opacity-0 transition-all duration-200 group-hover:opacity-100"
                 >
                   <MoreHorizontal size={14} />
