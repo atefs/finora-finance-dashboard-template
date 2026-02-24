@@ -53,34 +53,32 @@ export default function LoginPage() {
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" {...register("email")} />
+                <Label htmlFor="login-email">Email</Label>
+                <Input id="login-email" type="email" {...register("email")} aria-describedby={errors.email ? "login-email-error" : undefined} />
                 {errors.email && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.email.message}
-                  </p>
+                  <p id="login-email-error" className="text-destructive mt-1 text-xs">{errors.email.message}</p>
                 )}
               </div>
               <div>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="login-password">Password</Label>
                 <div className="relative">
                   <Input
-                    id="password"
+                    id="login-password"
                     type={showPw ? "text" : "password"}
                     {...register("password")}
+                    aria-describedby={errors.password ? "login-password-error" : undefined}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPw(!showPw)}
+                    aria-label="Toggle password visibility"
                     className="text-muted-foreground absolute top-1/2 right-3 -translate-y-1/2"
                   >
                     {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
                 {errors.password && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.password.message}
-                  </p>
+                  <p id="login-password-error" className="text-destructive mt-1 text-xs">{errors.password.message}</p>
                 )}
               </div>
               <div className="flex items-center justify-between">
@@ -90,10 +88,7 @@ export default function LoginPage() {
                     Remember me
                   </Label>
                 </div>
-                <Link
-                  to="/forgot-password"
-                  className="text-primary text-sm hover:underline"
-                >
+                <Link to="/forgot-password" className="text-primary text-sm hover:underline">
                   Forgot password?
                 </Link>
               </div>
