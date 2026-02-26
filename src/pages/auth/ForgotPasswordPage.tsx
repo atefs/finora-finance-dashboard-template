@@ -56,8 +56,8 @@ export default function ForgotPasswordPage() {
             {step === "request" && (
               <div className="space-y-4">
                 <div>
-                  <Label>Email</Label>
-                  <Input type="email" placeholder="Enter your email" />
+                  <Label htmlFor="forgot-email">Email</Label>
+                  <Input id="forgot-email" type="email" placeholder="Enter your email" />
                 </div>
                 <Button className="w-full" onClick={() => setStep("sent")}>
                   Send Reset Link
@@ -91,12 +91,12 @@ export default function ForgotPasswordPage() {
             {step === "reset" && (
               <div className="space-y-4">
                 <div>
-                  <Label>New Password</Label>
-                  <Input type="password" />
+                  <Label htmlFor="new-password">New Password</Label>
+                  <Input id="new-password" type="password" />
                 </div>
                 <div>
-                  <Label>Confirm Password</Label>
-                  <Input type="password" />
+                  <Label htmlFor="confirm-new-password">Confirm Password</Label>
+                  <Input id="confirm-new-password" type="password" />
                 </div>
                 <Button className="w-full" onClick={() => setStep("request")}>
                   Set New Password
