@@ -20,6 +20,7 @@ export default function DataTableToolbar({
           placeholder="Search..."
           value={searchValue}
           onChange={(e) => onSearchChange(e.target.value)}
+          aria-label="Search"
           className="h-7 border-0 bg-transparent p-0 text-sm focus-visible:ring-0"
         />
       </div>
