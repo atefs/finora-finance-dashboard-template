@@ -39,18 +39,8 @@ export default function SettingsPage() {
         className="flex flex-col gap-6 lg:flex-row"
       >
         <TabsList className="bg-card border-border flex h-auto shrink-0 rounded-2xl border p-1 lg:w-48 lg:flex-col">
-          {[
-            "General",
-            "Appearance",
-            "Notifications",
-            "Security",
-            "Billing",
-          ].map((t) => (
-            <TabsTrigger
-              key={t}
-              value={t.toLowerCase()}
-              className="w-full justify-start"
-            >
+          {["General", "Appearance", "Notifications", "Security", "Billing"].map((t) => (
+            <TabsTrigger key={t} value={t.toLowerCase()} className="w-full justify-start">
               {t}
             </TabsTrigger>
           ))}
@@ -64,13 +54,13 @@ export default function SettingsPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label>App Name</Label>
-                  <Input defaultValue="Finora Finance" />
+                  <Label htmlFor="app-name">App Name</Label>
+                  <Input id="app-name" defaultValue="Finora Finance" />
                 </div>
                 <div>
-                  <Label>Language</Label>
+                  <Label htmlFor="settings-language">Language</Label>
                   <Select defaultValue="en">
-                    <SelectTrigger>
+                    <SelectTrigger id="settings-language">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -80,9 +70,9 @@ export default function SettingsPage() {
                   </Select>
                 </div>
                 <div>
-                  <Label>Timezone</Label>
+                  <Label htmlFor="settings-timezone">Timezone</Label>
                   <Select defaultValue="pst">
-                    <SelectTrigger>
+                    <SelectTrigger id="settings-timezone">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -92,9 +82,9 @@ export default function SettingsPage() {
                   </Select>
                 </div>
                 <div>
-                  <Label>Currency</Label>
+                  <Label htmlFor="settings-currency">Currency</Label>
                   <Select defaultValue="usd">
-                    <SelectTrigger>
+                    <SelectTrigger id="settings-currency">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -117,9 +107,7 @@ export default function SettingsPage() {
                   <Label className="mb-3 block">Theme</Label>
                   <RadioGroup
                     value={theme}
-                    onValueChange={(v) =>
-                      setTheme(v as "light" | "dark" | "system")
-                    }
+                    onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}
                     className="flex gap-4"
                   >
                     {[
@@ -127,10 +115,7 @@ export default function SettingsPage() {
                       { value: "dark", label: "Dark", icon: Moon },
                       { value: "system", label: "System", icon: Monitor },
                     ].map(({ value, label, icon: Icon }) => (
-                      <label
-                        key={value}
-                        className="flex cursor-pointer items-center gap-2"
-                      >
+                      <label key={value} className="flex cursor-pointer items-center gap-2">
                         <RadioGroupItem value={value} />
                         <Icon size={16} />
                         {label}
@@ -142,29 +127,24 @@ export default function SettingsPage() {
                   <Label className="mb-3 block">Accent Color</Label>
                   <div className="flex gap-3">
                     {[
-                      "bg-primary",
-                      "bg-accent",
-                      "bg-emerald-500",
-                      "bg-violet-500",
-                      "bg-amber-500",
-                      "bg-rose-500",
+                      { className: "bg-primary", label: "Primary" },
+                      { className: "bg-accent", label: "Accent" },
+                      { className: "bg-emerald-500", label: "Emerald" },
+                      { className: "bg-violet-500", label: "Violet" },
+                      { className: "bg-amber-500", label: "Amber" },
+                      { className: "bg-rose-500", label: "Rose" },
                     ].map((c) => (
                       <button
-                        key={c}
-                        className={`h-8 w-8 rounded-full ${c} border-border border-2 transition-transform hover:scale-110`}
+                        key={c.className}
+                        aria-label={c.label}
+                        className={`h-8 w-8 rounded-full ${c.className} border-border border-2 transition-transform hover:scale-110`}
                       />
                     ))}
                   </div>
                 </div>
                 <div>
-                  <Label className="mb-3 block">Font Size</Label>
-                  <Slider
-                    defaultValue={[16]}
-                    min={12}
-                    max={20}
-                    step={1}
-                    className="w-64"
-                  />
+                  <Label htmlFor="font-size" className="mb-3 block">Font Size</Label>
+                  <Slider id="font-size" defaultValue={[16]} min={12} max={20} step={1} className="w-64" />
                 </div>
               </CardContent>
             </Card>
@@ -180,31 +160,29 @@ export default function SettingsPage() {
                   {
                     label: "Transaction alerts",
                     desc: "Get notified for every transaction",
+                    id: "notif-transaction",
                   },
                   {
                     label: "Security alerts",
                     desc: "Important security notifications",
+                    id: "notif-security",
                   },
                   {
                     label: "Marketing emails",
                     desc: "Product updates and offers",
+                    id: "notif-marketing",
                   },
-                  { label: "Weekly reports", desc: "Weekly spending summary" },
+                  { label: "Weekly reports", desc: "Weekly spending summary", id: "notif-weekly" },
                 ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center justify-between"
-                  >
+                  <div key={item.label} className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium">{item.label}</p>
-                      <p className="text-muted-foreground text-xs">
-                        {item.desc}
-                      </p>
+                      <Label htmlFor={item.id} className="text-sm font-medium">{item.label}</Label>
+                      <p className="text-muted-foreground text-xs">{item.desc}</p>
                     </div>
                     <Switch
+                      id={item.id}
                       defaultChecked={
-                        item.label.includes("Transaction") ||
-                        item.label.includes("Security")
+                        item.label.includes("Transaction") || item.label.includes("Security")
                       }
                     />
                   </div>
@@ -221,14 +199,10 @@ export default function SettingsPage() {
               <CardContent className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium">
-                      Two-factor authentication
-                    </p>
-                    <p className="text-muted-foreground text-xs">
-                      Add an extra layer of security
-                    </p>
+                    <Label htmlFor="2fa-switch" className="text-sm font-medium">Two-factor authentication</Label>
+                    <p className="text-muted-foreground text-xs">Add an extra layer of security</p>
                   </div>
-                  <Switch />
+                  <Switch id="2fa-switch" />
                 </div>
                 <div>
                   <p className="mb-3 text-sm font-medium">Active Sessions</p>
@@ -299,12 +273,8 @@ export default function SettingsPage() {
                           <TableCell className="text-muted-foreground text-sm">
                             {new Date(inv.date).toLocaleDateString()}
                           </TableCell>
-                          <TableCell className="text-sm">
-                            {inv.description}
-                          </TableCell>
-                          <TableCell className="text-right text-sm">
-                            ${inv.amount}
-                          </TableCell>
+                          <TableCell className="text-sm">{inv.description}</TableCell>
+                          <TableCell className="text-right text-sm">${inv.amount}</TableCell>
                           <TableCell>
                             <StatusBadge status={inv.status} />
                           </TableCell>
