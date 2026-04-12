@@ -110,4 +110,4 @@ Contributions are welcome. If you want to improve the template, open an issue or
 
 ## License
 
-This repository does not include a `LICENSE` file yet. Before publishing it as an open-source project, add your preferred license so others can clearly use, modify, and redistribute it.
+This project is licensed under the Apache License 2.0. See [LICENSE](./LICENSE) for the full text.
