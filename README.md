@@ -1,82 +1,113 @@
 # Finora Finance
 
-Finora Finance is a React + TypeScript + Vite dashboard template for banking products, fintech portals, and financial operations teams.
+Finora Finance is an open-source React + TypeScript dashboard template for banking products, fintech portals, and financial operations teams. It gives you a strong front-end foundation for finance-focused products with the screens and interaction patterns people expect from modern account, transaction, and settings experiences.
 
-## Overview
+## Why This Template
 
-- Front-end-only dashboard starter with reusable UI primitives in `src/components/ui`
-- Finance-focused shell with a sidebar, top bar, responsive navigation, and theme switching
-- Demo pages for dashboard metrics, transactions, profile, cards, settings, components, and auth flows
-- Tailwind CSS v4 tokens and theme variables defined in `src/index.css`
-- ESLint, Prettier, Vitest, and TypeScript tooling included
+- Gives you a finance-ready dashboard structure without starting from an empty shell
+- Covers common fintech UI needs like balances, transactions, profile settings, cards, and auth flows
+- Makes it easy to fork, rebrand, and connect to APIs or internal services
+- Provides a practical base for demos, MVPs, internal tools, or open-source improvements
+
+## Highlights
+
+- Finance-focused shell with sidebar navigation, top bar, and responsive layout behavior
+- Reusable UI primitives in `src/components/ui`
+- Theme support through the shared context in `src/context`
+- Demo pages for dashboard metrics, transactions, profile, cards, settings, components, and authentication
+- Tailwind CSS v4 theme tokens and design variables in `src/index.css`
+- TypeScript, ESLint, Prettier, and Vitest already configured
+
+## Best For
+
+- Banking and fintech dashboards
+- Wallet, card, or account management interfaces
+- Financial operations portals
+- Product demos and internal admin tools in the finance space
 
 ## Tech Stack
 
-- React 19, TypeScript 6, Vite 8
-- Tailwind CSS 4, Radix UI, shadcn-style component patterns
+- React 19, TypeScript, Vite
+- Tailwind CSS v4, Radix UI, shadcn-style component patterns
 - React Router 7, TanStack Query 5, React Hook Form, Zod
-- Recharts, Sonner, next-themes-style theme handling, Vitest, ESLint, Prettier
-
-## Requirements
-
-- Node.js `24.13.1`
-- `npm`
+- Recharts, Sonner, theme context handling, Vitest
 
 ## Getting Started
+
+### Requirements
+
+- Node.js `20.19+` or `22.12+`
+- `npm`
+
+### Installation
 
 ```bash
 npm install
 npm run dev
 ```
 
-The local dev server runs on port `8080`.
+The local development server runs at `http://localhost:8080`.
 
-## Scripts
+## Available Scripts
 
-```bash
-npm run dev
-npm run build
-npm run build:dev
-npm run preview
-npm run lint
-npm run lint:fix
-npm run format
-npm run format:check
-npm run test
-npm run test:watch
-npm run typecheck
-```
+| Command                | Description                              |
+| ---------------------- | ---------------------------------------- |
+| `npm run dev`          | Start the Vite development server        |
+| `npm run build`        | Create a production build                |
+| `npm run build:dev`    | Create a development-mode build          |
+| `npm run preview`      | Preview the production build locally     |
+| `npm run lint`         | Run ESLint                               |
+| `npm run lint:fix`     | Run ESLint and apply safe fixes          |
+| `npm run format`       | Format the project with Prettier         |
+| `npm run format:check` | Check formatting without writing changes |
+| `npm run test`         | Run the Vitest suite once                |
+| `npm run test:watch`   | Run Vitest in watch mode                 |
+| `npm run typecheck`    | Run the TypeScript compiler              |
 
 ## Project Structure
 
 ```text
 src/
-  components/    Dashboard widgets, layout pieces, shared helpers, and UI primitives
-  context/       Theme context
+  components/
+    dashboard/   Finance widgets and dashboard blocks
+    layout/      App shell, top bar, sidebar, and shared layout pieces
+    shared/      Cross-page helpers such as status badges and tables
+    ui/          Reusable UI primitives
+  context/       Theme state and providers
   hooks/         Shared client hooks
   lib/           Navigation, mock data, and utilities
-  pages/         Route-level demo pages
-  test/          Vitest setup and starter test
+  pages/         Route-level screens grouped by feature
+  test/          Vitest setup and starter tests
   types/         Shared TypeScript models
 ```
 
-## Routes
+## Included Routes
 
-| Route | Purpose |
-| --- | --- |
-| `/dashboard` | Main finance dashboard |
-| `/transactions` | Searchable and sortable transactions table |
-| `/profile` | Personal info and account preferences |
-| `/cards` | Card management UI |
-| `/settings` | Multi-tab settings experience |
-| `/components` | Internal component showcase |
-| `/login` | Sign-in screen |
-| `/register` | Sign-up screen |
-| `/forgot-password` | Password reset flow |
-| `*` | Fallback 404 page |
+| Route              | Purpose                                         |
+| ------------------ | ----------------------------------------------- |
+| `/dashboard`       | Main finance dashboard                          |
+| `/transactions`    | Searchable and sortable transactions table      |
+| `/profile`         | Personal profile and account preferences        |
+| `/cards`           | Card management experience                      |
+| `/settings`        | Multi-tab settings workspace                    |
+| `/components`      | Internal component showcase and pattern gallery |
+| `/login`           | Sign-in screen                                  |
+| `/register`        | Sign-up screen                                  |
+| `/forgot-password` | Password recovery flow                          |
+| `*`                | Fallback 404 page                               |
 
-## Notes
+## How to Adapt It
 
-- Routing is defined manually in `src/App.tsx`.
-- Navigation content is maintained in `src/lib/constants.ts`.
-- The template ships with static demo data and no backend integration.
+- Replace mock finance data with your own APIs, services, or local fixtures
+- Update navigation labels and structure in `src/lib/constants.ts`
+- Adjust branding, colors, and visual tokens in `src/index.css`
+- Extend the shell or theme behavior through `src/components/layout` and `src/context/theme-context.tsx`
+- Add product-specific routes in `src/App.tsx` and build new feature pages under `src/pages`
+
+## Contributing
+
+Contributions are welcome. If you want to improve the template, open an issue or submit a pull request with fixes, new finance UI patterns, accessibility improvements, stronger tests, or better documentation.
+
+## License
+
+This repository does not include a `LICENSE` file yet. Before publishing it as an open-source project, add your preferred license so others can clearly use, modify, and redistribute it.
