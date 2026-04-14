@@ -1,30 +1,21 @@
 # Finora Finance
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Finance](https://img.shields.io/badge/Template-Finance-10B981?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache%202.0-111827?style=for-the-badge)
 
-> A sleek fintech dashboard starter for products that need trust, clarity, and a polished financial UI without weeks of setup work.
+> A fintech dashboard template for banking products, fintech portals, and financial operations teams.
 
-Finora Finance is an open-source React + TypeScript dashboard template for banking products, fintech portals, and financial operations teams. It gives you a strong front-end foundation for finance-focused products with the screens and interaction patterns people expect from modern account, transaction, and settings experiences.
+Finora Finance is an open-source React + TypeScript dashboard template for banking products, fintech portals, and financial operations. It provides a strong front-end foundation with the screens and interaction patterns expected from modern account, transaction, and settings experiences.
 
 ## Why This Template
 
-- 💸 Gives you a finance-ready dashboard structure without starting from an empty shell
-- 🧾 Covers common fintech UI needs like balances, transactions, profile settings, cards, and auth flows
-- 🔌 Makes it easy to fork, rebrand, and connect to APIs or internal services
-- 🚀 Provides a practical base for demos, MVPs, internal tools, or open-source improvements
-
-## Highlights
-
-- 🏦 Finance-focused shell with sidebar navigation, top bar, and responsive layout behavior
-- 🛠️ Reusable UI primitives in `src/components/ui`
-- 🌗 Theme support through the shared context in `src/context`
-- 🧪 Demo pages for dashboard metrics, transactions, profile, cards, settings, components, and authentication
-- 🎨 Tailwind CSS v4 theme tokens and design variables in `src/index.css`
-- ✅ TypeScript, ESLint, Prettier, and Vitest already configured
+- Finance-ready dashboard structure without starting from an empty shell
+- Covers common fintech UI needs: balances, transactions, profile settings, cards, and auth flows
+- Easy to fork, rebrand, and connect to APIs or internal services
+- Practical base for demos, MVPs, internal tools, or open-source collaboration
 
 ## Best For
 
@@ -35,10 +26,21 @@ Finora Finance is an open-source React + TypeScript dashboard template for banki
 
 ## Tech Stack
 
-- React 19, TypeScript, Vite
-- Tailwind CSS v4, Radix UI, shadcn-style component patterns
-- React Router 7, TanStack Query 5, React Hook Form, Zod
-- Recharts, Sonner, theme context handling, Vitest
+| Category       | Technologies                                              |
+| -------------- | --------------------------------------------------------- |
+| Core           | React 19, TypeScript 6, Vite 8                            |
+| Styling        | Tailwind CSS v4, shadcn/ui                                |
+| Data and State | TanStack Query 5, React Hook Form + Zod                   |
+| Visualization  | Recharts                                                  |
+| Routing        | React Router 7                                            |
+| Testing        | Vitest                                                    |
+| Linting        | ESLint, Prettier                                          |
+
+## Features
+
+- **Dark / light / system theme** -- toggle between dark mode, light mode, or follow the OS preference via the shared theme context in `src/context`
+- **Transaction search, filter, and sort** -- the transactions page includes search, column sorting, and filter controls for exploring financial data
+- **Settings with 5 tabs** -- the settings page is organized into multiple tabs covering account, security, notifications, billing, and preferences
 
 ## Getting Started
 
@@ -55,6 +57,16 @@ npm run dev
 ```
 
 The local development server runs at `http://localhost:8080`.
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and fill in any required values:
+
+```bash
+cp .env.example .env
+```
+
+See `.env.example` for the full list of supported variables.
 
 ## Available Scripts
 
@@ -89,7 +101,7 @@ src/
   types/         Shared TypeScript models
 ```
 
-## Included Routes
+## Included Pages
 
 | Route              | Purpose                                         |
 | ------------------ | ----------------------------------------------- |
@@ -106,11 +118,16 @@ src/
 
 ## How to Adapt It
 
-- 💼 Replace mock finance data with your own APIs, services, or local fixtures
-- 🧭 Update navigation labels and structure in `src/lib/constants.ts`
-- 🎨 Adjust branding, colors, and visual tokens in `src/index.css`
-- 🧱 Extend the shell or theme behavior through `src/components/layout` and `src/context/theme-context.tsx`
-- 🛣️ Add product-specific routes in `src/App.tsx` and build new feature pages under `src/pages`
+- Replace mock finance data with your own APIs, services, or local fixtures
+- Update navigation labels and structure in `src/lib/constants.ts`
+- Adjust branding, colors, and visual tokens in `src/index.css`
+- Extend the shell or theme behavior through `src/components/layout` and `src/context/theme-context.tsx`
+- Add product-specific routes in `src/App.tsx` and build new feature pages under `src/pages`
+
+## Known Limitations
+
+- **Mock data only.** All financial data shown in the template is static or generated. No real API calls are made. Replace the mock data layer with your own backend when building a real product.
+- **react-hook-form type shim.** A `postinstall` script patches type compatibility for `react-hook-form` with TypeScript 6. This is a temporary workaround until the library ships updated types.
 
 ## Contributing
 

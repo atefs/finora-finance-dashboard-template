@@ -5,13 +5,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import EmptyState from "@/components/shared/EmptyState";
-import {
-  AlertCircle,
-  CheckCircle,
-  AlertTriangle,
-  Info,
-  Loader2,
-} from "lucide-react";
+import { AlertCircle, CheckCircle, AlertTriangle, Info, Loader2 } from "lucide-react";
 import { useState } from "react";
 
 export default function FeedbackTab() {
@@ -24,25 +18,14 @@ export default function FeedbackTab() {
           Toasts
         </h2>
         <div className="flex flex-wrap gap-3">
-          <Button onClick={() => toast.success("Operation successful!")}>
-            Success Toast
-          </Button>
-          <Button
-            variant="destructive"
-            onClick={() => toast.error("Something went wrong")}
-          >
+          <Button onClick={() => toast.success("Operation successful!")}>Success Toast</Button>
+          <Button variant="destructive" onClick={() => toast.error("Something went wrong")}>
             Error Toast
           </Button>
-          <Button
-            variant="outline"
-            onClick={() => toast.warning("Please check your input")}
-          >
+          <Button variant="outline" onClick={() => toast.warning("Please check your input")}>
             Warning Toast
           </Button>
-          <Button
-            variant="secondary"
-            onClick={() => toast.info("New update available")}
-          >
+          <Button variant="secondary" onClick={() => toast.info("New update available")}>
             Info Toast
           </Button>
           <Button
@@ -74,16 +57,12 @@ export default function FeedbackTab() {
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
-            <AlertDescription>
-              There was an error processing your request.
-            </AlertDescription>
+            <AlertDescription>There was an error processing your request.</AlertDescription>
           </Alert>
           <Alert>
             <AlertTriangle className="h-4 w-4 text-amber-500" />
             <AlertTitle>Warning</AlertTitle>
-            <AlertDescription>
-              Your session is about to expire.
-            </AlertDescription>
+            <AlertDescription>Your session is about to expire.</AlertDescription>
           </Alert>
           <Alert>
             <Info className="text-accent h-4 w-4" />

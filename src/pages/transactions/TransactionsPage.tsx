@@ -36,9 +36,7 @@ export default function TransactionsPage() {
   const filtered = useMemo(() => {
     let data = [...TRANSACTIONS];
     if (search)
-      data = data.filter((t) =>
-        t.description.toLowerCase().includes(search.toLowerCase()),
-      );
+      data = data.filter((t) => t.description.toLowerCase().includes(search.toLowerCase()));
     if (category !== "all") data = data.filter((t) => t.category === category);
     data.sort((a, b) => {
       const mul = sortAsc ? 1 : -1;
@@ -93,6 +91,7 @@ export default function TransactionsPage() {
             placeholder="Search..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            aria-label="Search transactions"
             className="h-7 w-40 border-0 bg-transparent p-0 text-sm focus-visible:ring-0"
           />
         </div>
@@ -123,16 +122,10 @@ export default function TransactionsPage() {
                     onCheckedChange={toggleAll}
                   />
                 </TableHead>
-                <TableHead
-                  className="cursor-pointer"
-                  onClick={() => toggleSort("date")}
-                >
+                <TableHead className="cursor-pointer" onClick={() => toggleSort("date")}>
                   Date <ArrowUpDown size={12} className="ml-1 inline" />
                 </TableHead>
-                <TableHead
-                  className="cursor-pointer"
-                  onClick={() => toggleSort("description")}
-                >
+                <TableHead className="cursor-pointer" onClick={() => toggleSort("description")}>
                   Description <ArrowUpDown size={12} className="ml-1 inline" />
                 </TableHead>
                 <TableHead>Category</TableHead>
@@ -157,13 +150,9 @@ export default function TransactionsPage() {
                   <TableCell className="text-muted-foreground text-sm">
                     {new Date(t.date).toLocaleDateString()}
                   </TableCell>
-                  <TableCell className="text-sm font-medium">
-                    {t.description}
-                  </TableCell>
+                  <TableCell className="text-sm font-medium">{t.description}</TableCell>
                   <TableCell>
-                    <span className="text-muted-foreground text-xs">
-                      {t.category}
-                    </span>
+                    <span className="text-muted-foreground text-xs">{t.category}</span>
                   </TableCell>
                   <TableCell
                     className={`text-right text-sm font-medium ${t.amount >= 0 ? "text-emerald-600" : "text-red-500"}`}
@@ -184,8 +173,7 @@ export default function TransactionsPage() {
         </div>
         <div className="border-border flex items-center justify-between border-t px-4 py-3">
           <p className="text-muted-foreground text-xs">
-            Showing {page * perPage + 1}–
-            {Math.min((page + 1) * perPage, filtered.length)} of{" "}
+            Showing {page * perPage + 1}–{Math.min((page + 1) * perPage, filtered.length)} of{" "}
             {filtered.length}
           </p>
           <div className="flex gap-1">

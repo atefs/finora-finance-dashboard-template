@@ -95,9 +95,7 @@ export default function DataDisplayTab() {
                 onChange={(e) => setTableSearch(e.target.value)}
                 className="bg-muted h-8 w-48 border-0 focus-visible:ring-0"
               />
-              {selected.size > 0 && (
-                <Badge variant="secondary">{selected.size} selected</Badge>
-              )}
+              {selected.size > 0 && <Badge variant="secondary">{selected.size} selected</Badge>}
             </div>
             <div className="overflow-x-auto">
               <Table>
@@ -105,13 +103,9 @@ export default function DataDisplayTab() {
                   <TableRow>
                     <TableHead className="w-10">
                       <Checkbox
-                        checked={
-                          selected.size === filtered.length &&
-                          filtered.length > 0
-                        }
+                        checked={selected.size === filtered.length && filtered.length > 0}
                         onCheckedChange={() => {
-                          if (selected.size === filtered.length)
-                            setSelected(new Set());
+                          if (selected.size === filtered.length) setSelected(new Set());
                           else setSelected(new Set(filtered.map((t) => t.id)));
                         }}
                       />
@@ -137,9 +131,7 @@ export default function DataDisplayTab() {
                           }}
                         />
                       </TableCell>
-                      <TableCell className="text-sm font-medium">
-                        {t.description}
-                      </TableCell>
+                      <TableCell className="text-sm font-medium">{t.description}</TableCell>
                       <TableCell>
                         <Badge variant="outline" className="text-xs">
                           {t.category}
@@ -148,8 +140,7 @@ export default function DataDisplayTab() {
                       <TableCell
                         className={`text-right text-sm font-medium ${t.amount >= 0 ? "text-emerald-600" : "text-red-500"}`}
                       >
-                        {t.amount >= 0 ? "+" : ""}$
-                        {Math.abs(t.amount).toFixed(2)}
+                        {t.amount >= 0 ? "+" : ""}${Math.abs(t.amount).toFixed(2)}
                       </TableCell>
                       <TableCell>
                         <StatusBadge status={t.status} />
@@ -157,20 +148,14 @@ export default function DataDisplayTab() {
                       <TableCell>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-7 w-7"
-                            >
+                            <Button variant="ghost" size="icon" className="h-7 w-7">
                               <MoreHorizontal size={14} />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent>
                             <DropdownMenuItem>Edit</DropdownMenuItem>
                             <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                            <DropdownMenuItem className="text-destructive">
-                              Delete
-                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </TableCell>
@@ -178,10 +163,7 @@ export default function DataDisplayTab() {
                   ))}
                   {filtered.length === 0 && (
                     <TableRow>
-                      <TableCell
-                        colSpan={6}
-                        className="text-muted-foreground py-8 text-center"
-                      >
+                      <TableCell colSpan={6} className="text-muted-foreground py-8 text-center">
                         No results found
                       </TableCell>
                     </TableRow>
@@ -202,13 +184,11 @@ export default function DataDisplayTab() {
             <div className="space-y-0">
               {ACTIVITY_FEED.slice(0, 6).map((item, i) => (
                 <div key={item.id} className="relative flex gap-3 pb-6">
-                  {i < 5 && (
-                    <div className="bg-border absolute top-6 bottom-0 left-[11px] w-px" />
-                  )}
+                  {i < 5 && <div className="bg-border absolute top-6 bottom-0 left-[11px] w-px" />}
                   <div
                     className={`text-primary-foreground z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs ${item.type === "payment" ? "bg-primary" : item.type === "transfer" ? "bg-accent" : item.type === "alert" ? "bg-destructive" : "bg-muted-foreground"}`}
                   >
-                    {item.type[0].toUpperCase()}
+                    {item.type[0]?.toUpperCase()}
                   </div>
                   <div className="flex-1">
                     <p className="text-sm">{item.description}</p>
@@ -220,8 +200,7 @@ export default function DataDisplayTab() {
                     <span
                       className={`text-sm font-medium ${item.amount > 0 ? "text-emerald-600" : "text-red-500"}`}
                     >
-                      {item.amount > 0 ? "+" : ""}$
-                      {Math.abs(item.amount).toFixed(2)}
+                      {item.amount > 0 ? "+" : ""}${Math.abs(item.amount).toFixed(2)}
                     </span>
                   )}
                 </div>
@@ -273,11 +252,7 @@ export default function DataDisplayTab() {
                       {i + 1}
                     </div>
                     <span className="hidden text-xs sm:inline">{s}</span>
-                    {i < 3 && (
-                      <div
-                        className={`h-px w-6 ${i < 1 ? "bg-primary" : "bg-border"}`}
-                      />
-                    )}
+                    {i < 3 && <div className={`h-px w-6 ${i < 1 ? "bg-primary" : "bg-border"}`} />}
                   </li>
                 ))}
               </ol>

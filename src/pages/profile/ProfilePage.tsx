@@ -51,20 +51,16 @@ export default function ProfilePage() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <Label htmlFor="fullName">Full Name</Label>
-                <Input id="fullName" {...register("fullName")} />
+                <Input id="fullName" {...register("fullName")} aria-describedby={errors.fullName ? "profile-name-error" : undefined} />
                 {errors.fullName && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.fullName.message}
-                  </p>
+                  <p id="profile-name-error" className="text-destructive mt-1 text-xs">{errors.fullName.message}</p>
                 )}
               </div>
               <div>
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" {...register("email")} />
+                <Input id="email" type="email" {...register("email")} aria-describedby={errors.email ? "profile-email-error" : undefined} />
                 {errors.email && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.email.message}
-                  </p>
+                  <p id="profile-email-error" className="text-destructive mt-1 text-xs">{errors.email.message}</p>
                 )}
               </div>
               <div>
@@ -89,17 +85,14 @@ export default function ProfilePage() {
               <p className="text-muted-foreground text-sm font-medium tracking-wider uppercase">
                 Notifications
               </p>
-              {[
-                "Email notifications",
-                "Push notifications",
-                "SMS alerts",
-                "Weekly digest",
-              ].map((label) => (
-                <div key={label} className="flex items-center justify-between">
-                  <Label>{label}</Label>
-                  <Switch defaultChecked={label.includes("Email")} />
-                </div>
-              ))}
+              {["Email notifications", "Push notifications", "SMS alerts", "Weekly digest"].map(
+                (label) => (
+                  <div key={label} className="flex items-center justify-between">
+                    <Label>{label}</Label>
+                    <Switch defaultChecked={label.includes("Email")} />
+                  </div>
+                ),
+              )}
             </div>
             <Separator />
             <div className="space-y-3">
@@ -113,9 +106,7 @@ export default function ProfilePage() {
             </div>
             <Separator />
             <div>
-              <p className="text-destructive mb-2 text-sm font-medium">
-                Danger Zone
-              </p>
+              <p className="text-destructive mb-2 text-sm font-medium">Danger Zone</p>
               <Button variant="destructive">Delete Account</Button>
             </div>
           </CardContent>

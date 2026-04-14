@@ -1,10 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { NAV_ITEMS } from "@/lib/constants";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 export default function Sidebar() {
@@ -82,11 +78,7 @@ export default function Sidebar() {
       {/* Mobile bottom bar */}
       <nav className="bg-sidebar-bg fixed right-0 bottom-0 left-0 z-40 mx-2 mb-2 flex h-16 items-center justify-around rounded-2xl px-2 md:hidden">
         {NAV_ITEMS.filter((n) => n.id !== "auth").map((item) => (
-          <NavLink
-            key={item.id}
-            to={item.path}
-            className={linkClass(item.path)}
-          >
+          <NavLink key={item.id} to={item.path} className={linkClass(item.path)}>
             <item.icon size={20} />
           </NavLink>
         ))}

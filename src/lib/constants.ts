@@ -9,6 +9,18 @@ import {
 } from "lucide-react";
 import type { NavItem } from "@/types";
 
+export const ROUTES = {
+  DASHBOARD: "/dashboard",
+  TRANSACTIONS: "/transactions",
+  PROFILE: "/profile",
+  CARDS: "/cards",
+  SETTINGS: "/settings",
+  COMPONENTS: "/components",
+  LOGIN: "/login",
+  REGISTER: "/register",
+  FORGOT_PASSWORD: "/forgot-password",
+} as const;
+
 export const NAV_ITEMS: NavItem[] = [
   {
     id: "dashboard",

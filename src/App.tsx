@@ -6,22 +6,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/context/theme-context";
 import AppShell from "@/components/layout/AppShell";
 import ScrollToTop from "@/components/ScrollToTop";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const DashboardPage = lazy(() => import("@/pages/dashboard/DashboardPage"));
-const TransactionsPage = lazy(
-  () => import("@/pages/transactions/TransactionsPage"),
-);
+const TransactionsPage = lazy(() => import("@/pages/transactions/TransactionsPage"));
 const ProfilePage = lazy(() => import("@/pages/profile/ProfilePage"));
 const CardsPage = lazy(() => import("@/pages/cards/CardsPage"));
 const SettingsPage = lazy(() => import("@/pages/settings/SettingsPage"));
-const ComponentsPage = lazy(
-  () => import("@/pages/components-showcase/ComponentsPage"),
-);
+const ComponentsPage = lazy(() => import("@/pages/components-showcase/ComponentsPage"));
 const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
 const RegisterPage = lazy(() => import("@/pages/auth/RegisterPage"));
-const ForgotPasswordPage = lazy(
-  () => import("@/pages/auth/ForgotPasswordPage"),
-);
+const ForgotPasswordPage = lazy(() => import("@/pages/auth/ForgotPasswordPage"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -29,12 +24,8 @@ const queryClient = new QueryClient();
 const RouteFallback = () => (
   <div className="bg-background flex min-h-screen items-center justify-center p-6">
     <div className="bg-card rounded-3xl px-8 py-6 text-center shadow-lg">
-      <p className="text-foreground text-sm font-medium">
-        Loading the next view...
-      </p>
-      <p className="text-muted-foreground mt-1 text-sm">
-        Pulling in the page bundle now.
-      </p>
+      <p className="text-foreground text-sm font-medium">Loading the next view...</p>
+      <p className="text-muted-foreground mt-1 text-sm">Pulling in the page bundle now.</p>
     </div>
   </div>
 );
@@ -50,7 +41,13 @@ const App = () => (
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-              <Route element={<AppShell />}>
+              <Route
+                element={
+                  <ErrorBoundary>
+                    <AppShell />
+                  </ErrorBoundary>
+                }
+              >
                 <Route index element={<Navigate to="/dashboard" replace />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/transactions" element={<TransactionsPage />} />

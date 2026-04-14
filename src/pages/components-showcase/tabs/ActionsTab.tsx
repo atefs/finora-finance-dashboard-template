@@ -34,11 +34,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -72,12 +68,7 @@ export default function ActionsTab() {
             className="justify-start"
           >
             {["Active", "Recent", "Pending", "Archived"].map((f) => (
-              <ToggleGroupItem
-                key={f}
-                value={f}
-                variant="outline"
-                className="rounded-full"
-              >
+              <ToggleGroupItem key={f} value={f} variant="outline" className="rounded-full">
                 {f}
               </ToggleGroupItem>
             ))}
@@ -107,9 +98,7 @@ export default function ActionsTab() {
                     ? { from: dateRange.from, to: dateRange.to }
                     : undefined
                 }
-                onSelect={(range) =>
-                  setDateRange({ from: range?.from, to: range?.to })
-                }
+                onSelect={(range) => setDateRange({ from: range?.from, to: range?.to })}
                 className="pointer-events-auto"
               />
             </PopoverContent>
@@ -153,7 +142,7 @@ export default function ActionsTab() {
             <Loader2 className="mr-2 animate-spin" size={16} />
             Loading
           </Button>
-          <Button size="icon">
+          <Button size="icon" aria-label="Add item">
             <Plus size={16} />
           </Button>
           <Button className="col-span-2 w-full">Full Width</Button>
@@ -213,9 +202,7 @@ export default function ActionsTab() {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Are you sure?</DialogTitle>
-                <DialogDescription>
-                  This action cannot be undone.
-                </DialogDescription>
+                <DialogDescription>This action cannot be undone.</DialogDescription>
               </DialogHeader>
               <DialogFooter>
                 <Button variant="outline">Cancel</Button>
@@ -250,12 +237,12 @@ export default function ActionsTab() {
               </DialogHeader>
               <div className="space-y-4 py-4">
                 <div>
-                  <Label>Name</Label>
-                  <Input defaultValue="Alif Reza" />
+                  <Label htmlFor="action-name">Name</Label>
+                  <Input id="action-name" defaultValue="Alif Reza" />
                 </div>
                 <div>
-                  <Label>Email</Label>
-                  <Input defaultValue="alif@fenco.io" />
+                  <Label htmlFor="action-email">Email</Label>
+                  <Input id="action-email" defaultValue="alif@fenco.io" />
                 </div>
               </div>
               <DialogFooter>
@@ -311,14 +298,10 @@ export default function ActionsTab() {
                   <TabsTrigger value="tab3">Tab 3</TabsTrigger>
                 </TabsList>
                 <TabsContent value="tab1">
-                  <p className="text-muted-foreground p-3 text-sm">
-                    Content for Tab 1
-                  </p>
+                  <p className="text-muted-foreground p-3 text-sm">Content for Tab 1</p>
                 </TabsContent>
                 <TabsContent value="tab2">
-                  <p className="text-muted-foreground p-3 text-sm">
-                    Content for Tab 2
-                  </p>
+                  <p className="text-muted-foreground p-3 text-sm">Content for Tab 2</p>
                 </TabsContent>
               </Tabs>
             </CardContent>
@@ -342,9 +325,7 @@ export default function ActionsTab() {
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="home">
-                  <p className="text-muted-foreground p-3 text-sm">
-                    Home content
-                  </p>
+                  <p className="text-muted-foreground p-3 text-sm">Home content</p>
                 </TabsContent>
               </Tabs>
             </CardContent>
@@ -362,9 +343,7 @@ export default function ActionsTab() {
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="a">
-                  <p className="text-muted-foreground p-3 text-sm">
-                    Option A content
-                  </p>
+                  <p className="text-muted-foreground p-3 text-sm">Option A content</p>
                 </TabsContent>
               </Tabs>
             </CardContent>

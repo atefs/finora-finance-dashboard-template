@@ -77,33 +77,31 @@ export default function FormsTab() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Default</Label>
-              <Input placeholder="Enter text..." />
+              <Label htmlFor="forms-default">Default</Label>
+              <Input id="forms-default" placeholder="Enter text..." />
             </CardContent>
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>With Leading Icon</Label>
+              <Label htmlFor="forms-icon-input">With Leading Icon</Label>
               <div className="relative">
                 <Search
                   size={16}
                   className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2"
                 />
-                <Input className="pl-9" placeholder="Search..." />
+                <Input id="forms-icon-input" className="pl-9" placeholder="Search..." />
               </div>
             </CardContent>
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Password Toggle</Label>
+              <Label htmlFor="forms-password">Password Toggle</Label>
               <div className="relative">
-                <Input
-                  type={showPw ? "text" : "password"}
-                  placeholder="Password"
-                />
+                <Input id="forms-password" type={showPw ? "text" : "password"} placeholder="Password" />
                 <button
                   type="button"
                   onClick={() => setShowPw(!showPw)}
+                  aria-label="Toggle password visibility"
                   className="text-muted-foreground absolute top-1/2 right-3 -translate-y-1/2"
                 >
                   {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -113,33 +111,28 @@ export default function FormsTab() {
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Disabled</Label>
-              <Input disabled placeholder="Disabled input" />
+              <Label htmlFor="forms-disabled">Disabled</Label>
+              <Input id="forms-disabled" disabled placeholder="Disabled input" />
             </CardContent>
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Read-only</Label>
-              <Input readOnly defaultValue="Read-only value" />
+              <Label htmlFor="forms-readonly">Read-only</Label>
+              <Input id="forms-readonly" readOnly defaultValue="Read-only value" />
             </CardContent>
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Error State</Label>
-              <Input className="ring-destructive ring-2" />
-              <p className="text-destructive mt-1 text-xs">
-                This field is required
-              </p>
+              <Label htmlFor="forms-error-state">Error State</Label>
+              <Input id="forms-error-state" className="ring-destructive ring-2" aria-describedby="forms-error-state-error" />
+              <p id="forms-error-state-error" className="text-destructive mt-1 text-xs">This field is required</p>
             </CardContent>
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Success State</Label>
+              <Label htmlFor="forms-success">Success State</Label>
               <div className="relative">
-                <Input
-                  className="pr-9 ring-2 ring-emerald-500"
-                  defaultValue="Valid input"
-                />
+                <Input id="forms-success" className="pr-9 ring-2 ring-emerald-500" defaultValue="Valid input" />
                 <Check
                   size={16}
                   className="absolute top-1/2 right-3 -translate-y-1/2 text-emerald-500"
@@ -149,22 +142,21 @@ export default function FormsTab() {
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Textarea</Label>
-              <Textarea rows={3} placeholder="Write something..." />
+              <Label htmlFor="forms-textarea">Textarea</Label>
+              <Textarea id="forms-textarea" rows={3} placeholder="Write something..." />
             </CardContent>
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Textarea with Counter</Label>
+              <Label htmlFor="forms-textarea-counter">Textarea with Counter</Label>
               <Textarea
+                id="forms-textarea-counter"
                 rows={3}
                 maxLength={200}
                 onChange={(e) => setCharCount(e.target.value.length)}
                 placeholder="Write something..."
               />
-              <p className="text-muted-foreground mt-1 text-right text-xs">
-                {charCount} / 200
-              </p>
+              <p className="text-muted-foreground mt-1 text-right text-xs">{charCount} / 200</p>
             </CardContent>
           </Card>
         </div>
@@ -177,9 +169,9 @@ export default function FormsTab() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Single Select</Label>
+              <Label htmlFor="forms-select">Single Select</Label>
               <Select>
-                <SelectTrigger>
+                <SelectTrigger id="forms-select">
                   <SelectValue placeholder="Choose..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -192,9 +184,9 @@ export default function FormsTab() {
           </Card>
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
-              <Label>Grouped Select</Label>
+              <Label htmlFor="forms-grouped-select">Grouped Select</Label>
               <Select>
-                <SelectTrigger>
+                <SelectTrigger id="forms-grouped-select">
                   <SelectValue placeholder="Choose..." />
                 </SelectTrigger>
                 <SelectContent>
@@ -253,11 +245,11 @@ export default function FormsTab() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card className="rounded-2xl">
             <CardContent className="space-y-3 pt-5">
-              <Label>Basic Switch</Label>
-              <Switch />
+              <Label htmlFor="forms-basic-switch">Basic Switch</Label>
+              <Switch id="forms-basic-switch" />
               <div className="flex items-center justify-between">
-                <Label>With label</Label>
-                <Switch defaultChecked />
+                <Label htmlFor="forms-labeled-switch">With label</Label>
+                <Switch id="forms-labeled-switch" defaultChecked />
               </div>
             </CardContent>
           </Card>
@@ -272,11 +264,7 @@ export default function FormsTab() {
           <Card className="rounded-2xl">
             <CardContent className="pt-5">
               <Label>Upload Progress</Label>
-              <Button
-                variant="outline"
-                className="mb-3"
-                onClick={simulateUpload}
-              >
+              <Button variant="outline" className="mb-3" onClick={simulateUpload}>
                 Simulate Upload
               </Button>
               <Progress value={uploadProgress} className="h-2" />
@@ -311,48 +299,38 @@ export default function FormsTab() {
             )}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
-                <Label>Name</Label>
-                <Input {...register("name")} />
+                <Label htmlFor="forms-val-name">Name</Label>
+                <Input id="forms-val-name" {...register("name")} aria-describedby={errors.name ? "forms-val-name-error" : undefined} />
                 {errors.name && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.name.message}
-                  </p>
+                  <p id="forms-val-name-error" className="text-destructive mt-1 text-xs">{errors.name.message}</p>
                 )}
               </div>
               <div>
-                <Label>Email</Label>
-                <Input type="email" {...register("email")} />
+                <Label htmlFor="forms-val-email">Email</Label>
+                <Input id="forms-val-email" type="email" {...register("email")} aria-describedby={errors.email ? "forms-val-email-error" : undefined} />
                 {errors.email && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.email.message}
-                  </p>
+                  <p id="forms-val-email-error" className="text-destructive mt-1 text-xs">{errors.email.message}</p>
                 )}
               </div>
               <div>
-                <Label>Password</Label>
-                <Input type="password" {...register("password")} />
+                <Label htmlFor="forms-val-password">Password</Label>
+                <Input id="forms-val-password" type="password" {...register("password")} aria-describedby={errors.password ? "forms-val-password-error" : undefined} />
                 {errors.password && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.password.message}
-                  </p>
+                  <p id="forms-val-password-error" className="text-destructive mt-1 text-xs">{errors.password.message}</p>
                 )}
               </div>
               <div>
-                <Label>Confirm Password</Label>
-                <Input type="password" {...register("confirm")} />
+                <Label htmlFor="forms-val-confirm">Confirm Password</Label>
+                <Input id="forms-val-confirm" type="password" {...register("confirm")} aria-describedby={errors.confirm ? "forms-val-confirm-error" : undefined} />
                 {errors.confirm && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.confirm.message}
-                  </p>
+                  <p id="forms-val-confirm-error" className="text-destructive mt-1 text-xs">{errors.confirm.message}</p>
                 )}
               </div>
               <div className="flex items-center gap-2">
-                <Checkbox {...register("tos")} />
-                <Label className="text-sm">I accept the Terms</Label>
+                <Checkbox id="forms-val-tos" {...register("tos")} />
+                <Label htmlFor="forms-val-tos" className="text-sm">I accept the Terms</Label>
               </div>
-              {errors.tos && (
-                <p className="text-destructive text-xs">{errors.tos.message}</p>
-              )}
+              {errors.tos && <p id="forms-val-tos-error" className="text-destructive text-xs">{errors.tos.message}</p>}
               <Button type="submit" className="w-full">
                 Create Account
               </Button>

@@ -22,16 +22,12 @@ export default function AuthPreviewTab() {
                   <div className="bg-primary text-primary-foreground mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold">
                     F
                   </div>
-                  <p className="text-muted-foreground text-[10px]">
-                    Finora Finance
-                  </p>
+                  <p className="text-muted-foreground text-[10px]">Finora Finance</p>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-muted h-8 rounded" />
                   <div className="bg-muted h-8 rounded" />
-                  {page.title === "Register" && (
-                    <div className="bg-muted h-8 rounded" />
-                  )}
+                  {page.title === "Register" && <div className="bg-muted h-8 rounded" />}
                   <div className="bg-primary h-8 rounded" />
                 </div>
                 <a

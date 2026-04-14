@@ -1,16 +1,6 @@
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -59,9 +49,7 @@ export default function LayoutTab() {
             <div className="mt-3 flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold">Analytics</h1>
-                <p className="text-muted-foreground text-sm">
-                  Overview of your analytics data
-                </p>
+                <p className="text-muted-foreground text-sm">Overview of your analytics data</p>
               </div>
               <Button>Export</Button>
             </div>
@@ -117,8 +105,7 @@ export default function LayoutTab() {
                 </CollapsibleTrigger>
                 <CollapsibleContent className="mt-3">
                   <p className="text-muted-foreground text-sm">
-                    This content can be toggled. Great for FAQ sections or
-                    expandable details.
+                    This content can be toggled. Great for FAQ sections or expandable details.
                   </p>
                 </CollapsibleContent>
               </CardContent>
@@ -129,9 +116,7 @@ export default function LayoutTab() {
               <p className="mb-3 text-sm">Nested Card</p>
               <Card className="bg-muted rounded-xl">
                 <CardContent className="pt-4">
-                  <p className="text-muted-foreground text-sm">
-                    Inner card with muted background
-                  </p>
+                  <p className="text-muted-foreground text-sm">Inner card with muted background</p>
                 </CardContent>
               </Card>
             </CardContent>
@@ -157,9 +142,7 @@ export default function LayoutTab() {
         <div className="space-y-4">
           {[1, 2, 3, 4].map((cols) => (
             <div key={cols}>
-              <p className="text-muted-foreground mb-2 text-xs">
-                {cols}-column grid
-              </p>
+              <p className="text-muted-foreground mb-2 text-xs">{cols}-column grid</p>
               <div className={`grid gap-3 grid-cols-${cols}`}>
                 {Array.from({ length: cols }).map((_, i) => (
                   <div

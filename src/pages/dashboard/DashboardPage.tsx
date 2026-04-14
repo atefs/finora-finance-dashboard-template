@@ -12,9 +12,7 @@ export default function DashboardPage() {
         <h2 className="text-foreground text-2xl font-bold">
           Hello, <span className="text-primary">Alif Reza</span>
         </h2>
-        <p className="text-muted-foreground text-sm">
-          View and control your finances here!
-        </p>
+        <p className="text-muted-foreground text-sm">View and control your finances here!</p>
       </div>
       <div className="animate-stagger grid grid-cols-1 gap-4 lg:grid-cols-3">
         <BalanceCard />

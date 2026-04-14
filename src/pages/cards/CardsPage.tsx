@@ -39,7 +39,7 @@ const cards: CardData[] = [
 ];
 
 export default function CardsPage() {
-  const [selectedId, setSelectedId] = useState(cards[0].id);
+  const [selectedId, setSelectedId] = useState(cards[0]!.id);
 
   return (
     <div>
@@ -65,9 +65,7 @@ export default function CardsPage() {
             <p className="mb-6 text-xs tracking-widest uppercase opacity-70">
               The Bank of Anything
             </p>
-            <p className="mb-4 font-mono text-sm tracking-widest">
-              •••• •••• •••• {card.number}
-            </p>
+            <p className="mb-4 font-mono text-sm tracking-widest">•••• •••• •••• {card.number}</p>
             <div className="flex items-end justify-between">
               <div>
                 <p className="text-[10px] opacity-70">{card.expiry}</p>
@@ -85,15 +83,11 @@ export default function CardsPage() {
         <div className="space-y-4">
           {cards.map((card) => (
             <div key={card.id} className="flex items-center justify-between">
-              <span className="text-sm font-medium">
-                Card ending in {card.number}
-              </span>
+              <span className="text-sm font-medium">Card ending in {card.number}</span>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <Label className="text-muted-foreground text-sm">
-                    Freeze
-                  </Label>
-                  <Switch />
+                  <Label htmlFor={`freeze-card-${card.id}`} className="text-muted-foreground text-sm">Freeze</Label>
+                  <Switch id={`freeze-card-${card.id}`} />
                 </div>
                 <Button variant="destructive" size="sm">
                   Delete

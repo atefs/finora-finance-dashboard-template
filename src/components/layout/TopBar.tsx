@@ -36,16 +36,18 @@ export default function TopBar() {
           <Search size={16} className="text-muted-foreground" />
           <Input
             placeholder="Search me..."
+            aria-label="Search"
             className="h-7 w-32 border-0 bg-transparent p-0 text-sm focus-visible:ring-0"
           />
         </div>
         <Button
           variant="ghost"
           size="icon"
+          aria-label="Notifications"
           className="relative rounded-xl transition-transform duration-200 hover:scale-110"
         >
           <Bell size={20} />
-          <span className="bg-primary absolute top-1 right-1 h-2 w-2 animate-pulse rounded-full" />
+          <span aria-hidden="true" className="bg-primary absolute top-1 right-1 h-2 w-2 animate-pulse rounded-full" />
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -65,9 +67,7 @@ export default function TopBar() {
             <DropdownMenuItem>Profile</DropdownMenuItem>
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
+            <DropdownMenuItem onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
               {theme === "dark" ? "Light Mode" : "Dark Mode"}
             </DropdownMenuItem>
             <DropdownMenuSeparator />

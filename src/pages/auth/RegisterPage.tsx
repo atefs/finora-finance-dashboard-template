@@ -19,13 +19,7 @@ const getStrength = (pw: string): 0 | 1 | 2 | 3 | 4 => {
   return score as 0 | 1 | 2 | 3 | 4;
 };
 const labels = ["", "Weak", "Fair", "Good", "Strong"];
-const colors = [
-  "",
-  "bg-destructive",
-  "bg-warning",
-  "bg-accent",
-  "bg-emerald-500",
-];
+const colors = ["", "bg-destructive", "bg-warning", "bg-accent", "bg-emerald-500"];
 
 const registerSchema = z
   .object({
@@ -81,27 +75,24 @@ export default function RegisterPage() {
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
-                <Label>Full Name</Label>
-                <Input {...register("fullName")} />
+                <Label htmlFor="register-name">Full Name</Label>
+                <Input id="register-name" {...register("fullName")} aria-describedby={errors.fullName ? "register-name-error" : undefined} />
                 {errors.fullName && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.fullName.message}
-                  </p>
+                  <p id="register-name-error" className="text-destructive mt-1 text-xs">{errors.fullName.message}</p>
                 )}
               </div>
               <div>
-                <Label>Email</Label>
-                <Input type="email" {...register("email")} />
+                <Label htmlFor="register-email">Email</Label>
+                <Input id="register-email" type="email" {...register("email")} aria-describedby={errors.email ? "register-email-error" : undefined} />
                 {errors.email && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.email.message}
-                  </p>
+                  <p id="register-email-error" className="text-destructive mt-1 text-xs">{errors.email.message}</p>
                 )}
               </div>
               <div>
-                <Label>Password</Label>
+                <Label htmlFor="register-password">Password</Label>
                 <div className="relative">
                   <Input
+                    id="register-password"
                     type={showPw ? "text" : "password"}
                     {...register("password")}
                     onChange={(e) => {
@@ -112,6 +103,7 @@ export default function RegisterPage() {
                   <button
                     type="button"
                     onClick={() => setShowPw(!showPw)}
+                    aria-label="Toggle password visibility"
                     className="text-muted-foreground absolute top-1/2 right-3 -translate-y-1/2"
                   >
                     {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -127,19 +119,15 @@ export default function RegisterPage() {
                         />
                       ))}
                     </div>
-                    <p className="text-muted-foreground text-xs">
-                      {labels[strength]}
-                    </p>
+                    <p className="text-muted-foreground text-xs">{labels[strength]}</p>
                   </div>
                 )}
               </div>
               <div>
-                <Label>Confirm Password</Label>
-                <Input type="password" {...register("confirmPassword")} />
+                <Label htmlFor="register-confirm">Confirm Password</Label>
+                <Input id="register-confirm" type="password" {...register("confirmPassword")} aria-describedby={errors.confirmPassword ? "register-confirm-error" : undefined} />
                 {errors.confirmPassword && (
-                  <p className="text-destructive mt-1 text-xs">
-                    {errors.confirmPassword.message}
-                  </p>
+                  <p id="register-confirm-error" className="text-destructive mt-1 text-xs">{errors.confirmPassword.message}</p>
                 )}
               </div>
               <div className="flex items-center gap-2">
